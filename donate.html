@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Now | Athiyayam Trust</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE STYLES (MATCHING THEME) --- */
+        :root {
+            --primary-color: #1a2e45; /* Navy */
+            --accent-color: #ff5722;  /* Orange */
+            --light-bg: #f4f6f8;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background-color: var(--light-bg); color: #333; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo {
+    display: flex;
+    align-items: center; /* Centers image and text vertically */
+    gap: 15px;           /* Space between the logo image and the text */
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo img {
+    height: 55px; /* Adjust this height to fit your navbar */
+    width: auto;  /* Maintains the image shape */
+    object-fit: contain;
+}
+
+/* Optional: Mobile adjustment */
+@media (max-width: 768px) {
+    .logo { font-size: 1.4rem; }
+    .logo img { height: 40px; }
+}
+        .nav-links { display: flex; align-items: center; list-style: none; }
+        .nav-links li { margin: 0 15px; }
+        .nav-links a { color: #333; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-color); }
+        .btn-donate { background-color: var(--accent-color); color: #fff !important; padding: 10px 25px; border-radius: 50px; font-weight: 600; }
+
+        /* --- HERO HEADER --- */
+        .donate-header {
+            background: linear-gradient(rgba(26, 46, 69, 0.9), rgba(26, 46, 69, 0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 5%;
+            text-align: center;
+            color: #fff;
+        }
+        .donate-header h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 10px; }
+        .donate-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        /* --- DONATION CONTAINER --- */
+        .donation-wrapper {
+            max-width: 1200px;
+            margin: -50px auto 50px auto; /* Overlap Header */
+            display: flex;
+            gap: 30px;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- LEFT: BANK & QR (Offline Methods) --- */
+        .offline-methods {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Bank Details Card */
+        .bank-card {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .bank-card::before {
+            content: '\f19c'; /* FontAwesome Bank Icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -20px; right: -20px;
+            font-size: 10rem;
+            opacity: 0.05;
+        }
+
+        .bank-card h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+        
+        .detail-row { margin-bottom: 20px; }
+        .detail-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; display: block; margin-bottom: 5px; }
+        .detail-value { font-size: 1.2rem; font-weight: 600; font-family: monospace; letter-spacing: 0.5px; display: flex; align-items: center; }
+        
+        .copy-icon {
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .copy-icon:hover { opacity: 1; color: var(--accent-color); }
+        .tooltip { position: absolute; background: #333; color: #fff; padding: 5px 10px; border-radius: 4px; font-size: 12px; top: 10px; right: 10px; opacity: 0; transition: 0.3s; }
+
+        /* QR Code Card */
+        .qr-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .qr-frame {
+            border: 2px dashed var(--primary-color);
+            padding: 15px;
+            display: inline-block;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .qr-img { width: 180px; height: 180px; object-fit: contain; }
+        .payment-apps { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .app-logo { height: 25px; opacity: 0.8; }
+
+        /* --- RIGHT: ONLINE FORM --- */
+        .online-form-container {
+            flex: 1.2;
+            background: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .online-form-container h2 { font-family: var(--font-heading); color: var(--primary-color); margin-bottom: 30px; font-size: 2rem; }
+
+        /* Preset Amounts */
+        .amount-options { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .amt-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #eee;
+            background: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            color: #555;
+        }
+        .amt-btn:hover, .amt-btn.active { border-color: var(--accent-color); background-color: #fff5f2; color: var(--accent-color); }
+
+        /* Form Inputs */
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+        .form-control {
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .form-control:focus { border-color: var(--accent-color); }
+
+        .btn-submit-donation {
+            width: 100%;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            transition: 0.3s;
+        }
+        .btn-submit-donation:hover { background: #e64a19; transform: translateY(-2px); }
+
+        /* Tax Benefit Box */
+        .tax-benefit {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        .tax-benefit i { font-size: 1.2rem; margin-right: 10px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .donation-wrapper { flex-direction: column; margin-top: 0; padding-top: 40px; }
+            .online-form-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/Logo.png" alt="Logo">
+            <span>ATHIYAYAM TRUST</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="press.html">Press</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="donate.html" class="btn-donate">Donate Now</a></li>
+        </ul>
+    </nav>
+
+    <header class="donate-header">
+        <h1>Your Support Changes Lives</h1>
+        <p>Every contribution, no matter how small, brings hope to those in need. Join us in our mission to create a better tomorrow.</p>
+    </header>
+
+    <div class="donation-wrapper">
+
+        <div class="offline-methods">
+            
+            <div class="bank-card">
+                <h3>Direct Bank Transfer</h3>
+                <div class="tooltip" id="copyTooltip">Copied!</div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Account Name</span>
+                    <span class="detail-value">Athiyayam Charitable Trust</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Account Number</span>
+                    <span class="detail-value" id="accNum">98765432101234 <i class="far fa-copy copy-icon" onclick="copyToClipboard('accNum')"></i></span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">IFSC Code</span>
+                    <span class="detail-value" id="ifsc">SBIN0001234 <i class="far fa-copy copy-icon" onclick="copyToClipboard('ifsc')"></i></span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Bank Name</span>
+                    <span class="detail-value">State Bank of India, Chennai Branch</span>
+                </div>
+            </div>
+
+            <div class="qr-card">
+                <h4 style="margin-bottom:15px; color:var(--primary-color);">Scan to Pay via UPI</h4>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=athiyayam@sbi&pn=AthiyayamTrust" alt="Donate QR" class="qr-img">
+                </div>
+                <p style="font-size:0.9rem; color:#666;">UPI ID: <strong>athiyayam@sbi</strong></p>
+                
+                <div class="payment-apps">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" class="app-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe" class="app-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm" class="app-logo">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="online-form-container">
+            <h2>Make an Online Donation</h2>
+            
+            <form action="#">
+                <div class="form-group">
+                    <label class="form-label">Choose Donation Amount (₹)</label>
+                    <div class="amount-options">
+                        <div class="amt-btn" onclick="selectAmount(500)">500</div>
+                        <div class="amt-btn active" onclick="selectAmount(1000)">1000</div>
+                        <div class="amt-btn" onclick="selectAmount(2500)">2500</div>
+                        <div class="amt-btn" onclick="selectAmount(5000)">5000</div>
+                    </div>
+                    <input type="number" id="customAmount" class="form-control" placeholder="Enter Custom Amount" value="1000">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Phone Number (Optional)</label>
+                    <input type="text" class="form-control" placeholder="+91 98765 43210">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">PAN Card (For Tax Exemption)</label>
+                    <input type="text" class="form-control" placeholder="ABCDE1234F" style="text-transform: uppercase;">
+                </div>
+
+                <button type="submit" class="btn-submit-donation">Proceed to Pay <i class="fas fa-lock" style="margin-left:8px; font-size:0.9rem;"></i></button>
+
+                <div class="tax-benefit">
+                    <i class="fas fa-certificate"></i>
+                    <span><strong>Tax Benefit:</strong> All donations are 50% tax-exempt under Section 80G of the Income Tax Act.</span>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <footer style="background:var(--primary-color); color:#fff; text-align:center; padding:20px; font-size:0.9rem;">
+        <p>© Copyright 2025-26: Athiyayam Charitable Trust. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 1. Amount Selection Logic
+        function selectAmount(amount) {
+            // Update input value
+            document.getElementById('customAmount').value = amount;
+            
+            // Visual feedback on buttons
+            const buttons = document.querySelectorAll('.amt-btn');
+            buttons.forEach(btn => {
+                if (parseInt(btn.innerText) === amount) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Listener for manual typing to remove active state from buttons
+        document.getElementById('customAmount').addEventListener('input', function() {
+            document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
+        });
+
+        // 2. Copy to Clipboard Functionality
+        function copyToClipboard(elementId) {
+            // Get the text (minus the icon)
+            const element = document.getElementById(elementId);
+            const textToCopy = element.innerText.trim();
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show Tooltip
+                const tooltip = document.getElementById('copyTooltip');
+                tooltip.style.opacity = '1';
+                setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>

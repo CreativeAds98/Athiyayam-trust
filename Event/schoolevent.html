@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inaugural Event | Athiyayam Trust</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --primary-color: #1a2e45;
+            --accent-color: #ff5722;
+            --text-dark: #333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.8; background: #f9f9f9; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .logo img { height: 40px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { color: #333; font-weight: 500; }
+        .btn-donate { background-color: var(--accent-color); color: #fff !important; padding: 8px 20px; border-radius: 50px; }
+
+        /* --- ARTICLE CONTAINER --- */
+        .article-container {
+            max-width: 900px; /* Optimal width for reading */
+            margin: 40px auto;
+            background: #fff;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+        .back-link:hover { color: var(--accent-color); }
+
+        /* Header */
+        .article-header { border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 30px; }
+        .news-meta { color: var(--accent-color); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .article-title { font-family: var(--font-heading); font-size: 2.5rem; color: var(--primary-color); line-height: 1.3; margin: 15px 0; }
+        .article-date { color: #888; font-size: 0.9rem; }
+
+        /* Body Text */
+        .article-body p { margin-bottom: 20px; font-size: 1.05rem; color: #444; }
+        .article-body strong { color: var(--primary-color); }
+        .quote-box {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            font-style: italic;
+            color: #555;
+            margin: 30px 0;
+            background: #fff5f2;
+            padding: 20px;
+        }
+
+        /* --- MASSIVE GALLERY GRID (50+ Images) --- */
+        .gallery-wrapper {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #eee;
+        }
+        .gallery-title { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-color); }
+
+        .large-grid {
+            display: grid;
+            /* Creates a responsive grid of small thumbnails */
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+            gap: 10px;
+        }
+
+        .grid-item {
+            height: 120px;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+        .grid-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: 0.3s;
+        }
+        .grid-item:hover img { transform: scale(1.1); filter: brightness(0.8); }
+
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 2000;
+            display: none; align-items: center; justify-content: center;
+        }
+        .lightbox.show { display: flex; }
+        .lightbox-img { max-height: 90vh; max-width: 90vw; border: 2px solid #fff; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 2rem; cursor: pointer; padding: 20px;
+            background: rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        .prev { left: 0; } .next { right: 0; }
+        .lightbox-nav:hover { background: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .article-container { padding: 30px 20px; margin: 0; border-radius: 0; }
+            .article-title { font-size: 1.8rem; }
+            .large-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../assets/Logo.png" alt="Logo"> <span>ATHIYAYAM TRUST</span>
+        </a>
+        <a href="press.html" class="back-link" style="margin:0;"><i class="fas fa-arrow-left"></i> Back to Media</a>
+    </nav>
+
+    <article class="article-container">
+        
+        <a href="index.html#events-trigger" class="back-link"><i class="fas fa-arrow-left"></i> Back to Events</a>
+        
+        <header class="article-header">
+            <span class="news-meta">Social Welfare • Coimbatore</span>
+            <h1 class="article-title">Athiyayam Charitable Trust Provides Essential Supplies to Special Children's School</h1>
+            <div class="article-date"><i class="far fa-calendar-alt"></i> October 30, 2025</div>
+        </header>
+
+        <div class="article-body">
+            <p><strong>COIMBATORE:</strong> In a heartwarming display of community service, youth in Coimbatore have united to form the "Athiyayam Charitable Trust" with the aim of focusing on social welfare activities and providing enhanced services to the community.</p>
+
+            <p>Established with a focus on medicine, education, and social welfare, the trust held its inaugural social service event at the <strong>Star Special Children Care and Rehabilitation Center</strong> located in Singanallur.</p>
+
+            <img src="images/event-10.jpg" alt="Event Main Photo" style="width:100%; border-radius:8px; margin:20px 0;">
+
+            <p>The event was presided over by the Trust's Founder, <strong>Mr. Rajasekar</strong>, with Managing Trustees Mr. Nagaraj and Mr. Raj Mohan leading the proceedings. During the event, the administrators of Athiyayam Trust donated essential supplies required for the special school and rehabilitation center. Following the donation, lunch was served to everyone present.</p>
+
+            <div class="quote-box">
+                "While underprivileged families receive various forms of assistance through NGOs, access to medical aid for everyone remains a significant challenge. Therefore, our trust has decided to place extra emphasis on providing medical assistance."
+                <br><br><strong>- Trust Administrators</strong>
+            </div>
+
+            <p>The event was attended by the Trust's Treasurer Mr. Hadley, along with Trustees Mr. Karthik, Mr. Venkatesh, and Mr. Sathishkumar.</p>
+        </div>
+
+        <div class="gallery-wrapper">
+            <h3 class="gallery-title">Event Gallery</h3>
+            <p style="margin-bottom:20px; color:#666;">Click on any image to view full screen.</p>
+            
+            <div class="large-grid" id="galleryGrid">
+                </div>
+        </div>
+
+    </article>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-nav prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-nav next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
+        <img src="" class="lightbox-img" id="lightboxImg">
+    </div>
+
+<script>
+    /* --- CONFIGURATION --- */
+    const galleryGrid = document.getElementById('galleryGrid');
+    
+    // 1. YOUR SETTINGS
+    const totalImages = 58;                // Total number of images
+    // NOTE: Ensure this path matches your folder structure exactly. 
+    // If your HTML file is in the root, it should likely be 'assets/images/'
+    const folderPath = 'images/';   
+    
+    // This is the start of the file name BEFORE the number.
+    // If your file is event-1.jpg, the prefix is 'event-'
+    const fileNamePrefix = 'event-';       
+    const fileExtension = '.jpg';          
+
+    // 2. GENERATE GRID AUTOMATICALLY
+    for (let i = 1; i <= totalImages; i++) {
+        const item = document.createElement('div');
+        item.className = 'grid-item';
+        
+        const img = document.createElement('img');
+        
+        // CORRECTION: Added backticks (`) and fixed path construction
+        // Result: assets/images/event-1.jpg
+        img.src = `${folderPath}${fileNamePrefix}${i}${fileExtension}`; 
+        
+        img.loading = "lazy"; 
+        img.alt = `Event Photo ${i}`;
+        
+        // Error handling: Hide box if image is missing
+        img.onerror = function() { item.style.display = 'none'; };
+
+        // Click event to open Lightbox
+        item.onclick = () => openLightbox(img.src, i);
+
+        item.appendChild(img);
+        galleryGrid.appendChild(item);
+    }
+
+    // 3. LIGHTBOX LOGIC
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentImageIndex = 0;
+    
+    function openLightbox(src, index) {
+        lightbox.classList.add('show');
+        lightboxImg.src = src;
+        currentImageIndex = index;
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('show');
+        document.body.style.overflow = 'auto'; 
+    }
+
+    function changeSlide(direction) {
+        currentImageIndex += direction;
+        
+        // Loop functionality
+        if (currentImageIndex > totalImages) currentImageIndex = 1;
+        if (currentImageIndex < 1) currentImageIndex = totalImages;
+
+        // Update the Lightbox Image
+        lightboxImg.src = `${folderPath}${fileNamePrefix}${currentImageIndex}${fileExtension}`;
+    }
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('show')) return;
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
+</body>
+</html>
