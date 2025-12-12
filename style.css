@@ -1534,46 +1534,46 @@
             .footer-bottom { flex-direction: column; text-align: center; }
         }
     
- 
+    
 
-            /* --- CLEAN TRANSLATOR STYLE --- */
+                /* --- GOOGLE TRANSLATE STYLES --- */
 
-            /* 1. Hide Google's Top Banner & Icons */
-            .goog-te-banner-frame { display: none !important; }
-            .goog-te-gadget-icon { display: none !important; }
-            body { top: 0px !important; }
+        /* 1. Hide the Google Top Bar (The Banner) */
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
 
-            /* 2. Container Styling */
-            #google_translate_element {
-                display: inline-block;
-                margin-right: 15px;
-            }
+        /* 2. Hide the Google Logo Icon */
+        .goog-te-gadget-icon { display: none !important; }
 
-            /* 3. Style the Dropdown Menu */
-            .goog-te-combo {
-                background-color: #fff;       /* White Background */
-                border: 1px solid #1a2e45;    /* Navy Border */
-                color: #1a2e45;               /* Navy Text */
-                padding: 8px 12px;            /* Comfortable Spacing */
-                border-radius: 6px;           /* Rounded Corners */
-                font-family: 'Poppins', sans-serif;
-                font-size: 0.9rem;
-                font-weight: 500;
-                outline: none;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
+        /* 3. Container Alignment */
+        #google_translate_element {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
 
-            /* 4. Hover Effect */
-            .goog-te-combo:hover {
-                background-color: #1a2e45;    /* Navy Background on Hover */
-                color: #fff;                  /* White Text on Hover */
-                border-color: #1a2e45;
-            }
+        /* 4. Style the Dropdown Box */
+        .goog-te-combo {
+            background-color: #fff;
+            border: 1px solid #1a2e45; /* Navy Border to match theme */
+            color: #1a2e45;            /* Navy Text */
+            padding: 8px 12px;         /* Padding matches Donate button height */
+            border-radius: 50px;       /* Rounded edges like Donate button */
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-            /* 5. Hide "Powered by Google" Text */
-            .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
-            .goog-te-gadget span { display: none !important; }
-            .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
-        
-        
+        /* 5. Hover Effect */
+        .goog-te-combo:hover {
+            background-color: #f4f6f8;
+            border-color: #ff5722; /* Orange Accent on Hover */
+        }
+
+        /* 6. Hide 'Powered by Google' text */
+        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
+        .goog-te-gadget span { display: none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
