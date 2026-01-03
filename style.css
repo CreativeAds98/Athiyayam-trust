@@ -15,22 +15,19 @@
         a { text-decoration: none; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- TOP BAR --- */
-        .top-bar {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 20;
-        }
-        .contact-info span { margin-right: 20px; }
-        .contact-info i { margin-right: 8px; color: var(--accent-color); }
-        .social-icons a { color: var(--text-light); margin-left: 15px; font-size: 1.1rem; }
-        .social-icons a:hover { color: var(--accent-color); }
+
+        /* Logo Text Transition */
+            .logo-text {
+                display: flex;
+                flex-direction: column;
+                transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+                opacity: 1;
+            }
+
+            /* Class to hide text during swap */
+            .logo-text.fade-out {
+                opacity: 0;
+            }
 
         /* --- NAVIGATION --- */
         .navbar {
@@ -95,6 +92,53 @@
         }
 
 
+
+            /* --- HAMBURGER TOGGLE --- */
+            .menu-toggle {
+                display: none; /* Hidden on Desktop */
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--primary-color);
+            }
+
+            /* --- MOBILE RESPONSIVENESS --- */
+            @media (max-width: 768px) {
+                /* Show Toggle Button */
+                .menu-toggle {
+                    display: block;
+                }
+
+                /* Hide Links by default */
+                .nav-links {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%; /* Push right below navbar */
+                    left: 0;
+                    width: 100%;
+                    background: #fff;
+                    padding: 20px 0;
+                    text-align: center;
+                    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                    z-index: 999;
+                }
+
+                /* Class to show links when clicked */
+                .nav-links.active {
+                    display: flex;
+                }
+
+                .nav-links li {
+                    margin: 15px 0;
+                }
+
+                /* Adjust button in mobile menu */
+                .btn-donate {
+                    display: inline-block;
+                    margin-top: 10px;
+                }
+            }
+
         .nav-links { display: flex; align-items: center; }
         .nav-links li { margin: 0 15px; }
         .nav-links a { color: var(--text-dark); font-weight: 500; font-size: 1rem; }
@@ -111,149 +155,150 @@
 
 
 
-        /* --- HERO SECTION WITH ZOOM SLIDESHOW --- */
-        .hero {
-            height: 85vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            overflow: hidden; /* Important to crop the zoomed images */
-        }
+/* --- HERO CONTAINER --- */
+    .hero {
+        height: 85vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 5%;
+        overflow: hidden;
+    }
 
-        /* The Slideshow Container */
-        .slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+    /* --- SLIDESHOW (IMAGES) --- */
+    .slideshow {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1;
+    }
+    .slide {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transform: scale(1);
+        animation: imageAnimation 15s infinite; /* 15s Cycle */
+    }
 
-        /* Individual Slides */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transform: scale(1);
-            /* 3 images x 5 seconds = 15s total cycle */
-            animation: zoomFade 15s infinite; 
-        }
+    /* Define Background Images Here */
+    .slide:nth-child(1) { background-image: url('assets/banner/banner-2.jpg'); animation-delay: 0s; }
+    .slide:nth-child(2) { background-image: url('assets/banner/banner-5.jpg'); animation-delay: 5s; }
+    .slide:nth-child(3) { background-image: url('assets/banner/banner-3.jpg'); animation-delay: 10s; }
 
-        /* Slide Images */
-        /* Image 1: Modern Building/Trust */
-        .slide:nth-child(1) {
-            background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop');
-            animation-delay: 0s;
-        }
-        /* Image 2: Education / Children */
-        .slide:nth-child(2) {
-            background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop');
-            animation-delay: 5s;
-        }
-        /* Image 3: Healthcare / Social Support */
-        .slide:nth-child(3) {
-            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop');
-            animation-delay: 10s;
-        }
 
-        /* Overlay to darken images */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--overlay-color);
-            z-index: 2;
-        }
+    /* --- TEXT WRAPPER --- */
+    .hero-content-wrapper {
+        position: relative;
+        z-index: 3; /* Above Overlay */
+        width: 100%;
+        max-width: 900px;
+        height: 200px; /* Reduced height since text is smaller */
+        display: flex;
+        align-items: center;
+    }
 
-        /* Keyframes for Zoom and Fade Effect */
-        @keyframes zoomFade {
-            0% {
-                opacity: 0;
-                transform: scale(1);
-            }
-            5% {
-                opacity: 1; /* Fade in quickly */
-            }
-            33.33% {
-                opacity: 1; /* Stay visible */
-            }
-            38.33% {
-                opacity: 0; /* Fade out as next image comes in */
-                transform: scale(1.15); /* End at 115% zoom */
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1); /* Reset */
-            }
-        }
+    /* --- TEXT SLIDES --- */
+    .hero-text-slide {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        opacity: 0;
+        animation: textAnimation 15s infinite;
+    }
 
-        /* Hero Text Content */
-        .hero-content {
-            position: relative;
-            z-index: 3; /* Must be higher than overlay */
-            max-width: 700px;
-            color: var(--text-light);
-            animation: fadeInUp 1.5s ease-out;
-        }
+    /* Sync Text Delays with Images */
+    .hero-text-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-text-slide:nth-child(2) { animation-delay: 5s; }
+    .hero-text-slide:nth-child(3) { animation-delay: 10s; }
 
-        .sub-heading {
-            color: var(--accent-color);
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .hero h1 {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-        .btn-discover {
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
-        }
-        .btn-discover:hover { background-color: #e64a19; transform: translateY(-3px); }
 
-        /* --- WHATSAPP FLOAT --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
-        .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
+
+    /* --- BOLD TYPOGRAPHY STYLES --- */
+    .hero-content-wrapper {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        max-width: 900px; /* Wider to fit big text */
+        height: 400px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sub-heading {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: block;
+        color: #fff; /* White sub-heading for contrast */
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+        font-family: var(--font-heading);
+        font-size: 4rem; /* Huge Text */
+        font-weight: 700; /* Extra Bold */
+        text-transform: uppercase;
+        line-height: 1;
+        margin-bottom: 20px;
+        /* Text Shadow for pop against background */
+        text-shadow: 3px 3px 0px rgba(0,0,0,0.3); 
+    }
+
+    .hero p {
+        color: #f0f0f0;
+        font-size: 1.3rem;
+        font-weight: 500;
+        max-width: 600px;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    /* --- COLORFUL THEMES --- */
+    .slide-text-1 h1 { color: #ffc107; } /* Gold */
+    .slide-text-2 h1 { color: #ff5252; } /* Red */
+    .slide-text-3 h1 { color: #00e676; } /* Green */
+
+    /* --- OVERLAY --- */
+    .overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+       
+        z-index: 2;
+    }
+
+    /* --- BUTTON --- */
+    .btn-discover {
+        background-color: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .btn-discover:hover { background-color: #fff; color: #333; }
+
+    /* --- ANIMATIONS --- */
+    @keyframes imageAnimation {
+        0% { opacity: 0; transform: scale(1); }
+        5% { opacity: 1; }
+        33% { opacity: 1; }
+        38% { opacity: 0; transform: scale(1.1); }
+        100% { opacity: 0; transform: scale(1); }
+    }
+
+    @keyframes textAnimation {
+        0% { opacity: 0; transform: translateY(20px); }
+        5% { opacity: 1; transform: translateY(0); }
+        33% { opacity: 1; transform: translateY(0); }
+        38% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 0; transform: translateY(0); }
+    }
+
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
@@ -1621,3 +1666,80 @@
 .goog-te-banner-frame { display: none !important; }
 body { top: 0px !important; }
 .goog-te-gadget-icon { display: none !important; }
+
+
+
+
+/* --- SCROLL TO TOP BUTTON --- */
+.scroll-up-btn {
+    position: fixed;
+    bottom: 85px; /* 85px from bottom (Sits above WhatsApp) */
+    right: 20px;  /* Aligned to right */
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color); /* Navy Blue */
+    color: #fff;
+    border-radius: 50%; /* Circle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999; /* Stays on top */
+    
+    /* Animation for appearing */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Class added via JS to show button */
+.scroll-up-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hover Effect */
+.scroll-up-btn:hover {
+    background-color: var(--accent-color); /* Orange on hover */
+    transform: translateY(-5px);
+}
+
+
+/* --- WHATSAPP FLOATING BUTTON --- */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px; /* Sits at the bottom */
+    right: 20px;  /* Aligned to right */
+    width: 55px;
+    height: 55px;
+    background-color: #25D366; /* WhatsApp Green */
+    color: #fff;
+    border-radius: 50%; /* Circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; /* Icon size */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 10000; /* Highest z-index to stay on top of everything */
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect (Pulse) */
+.whatsapp-btn:hover {
+    transform: scale(1.1); /* Grows slightly */
+    background-color: #20ba5a; /* Slightly darker green */
+}
+
+/* Optional: Pulse Animation to catch attention */
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-btn {
+    animation: pulse-green 2s infinite;
+}

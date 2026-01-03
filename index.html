@@ -8,70 +8,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     
  
 </head>
 <body>
 
-   <!-- <div class="top-bar">
-        <div class="contact-info">
-            <span><i class="fas fa-envelope"></i> contact@athiyayam.com</span>
-            <span><i class="fas fa-phone-alt"></i> +91 9092019000 / 8124381432</span>
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <img src="assets/Logo.png" alt="Logo">
+        <div class="logo-text" id="logoText">
+            <span class="brand-main" id="brandMain">ATHIYAYAM</span>
+            <span class="brand-sub" id="brandSub">TRUST</span>
         </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>-->
-
-    <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="assets/Logo.png" alt="Logo">
-                    <div class="logo-text">
-                        <span class="brand-main">ATHIYAYAM</span>
-                        <span class="brand-sub">TRUST</span>
-                    </div>
-                </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="#program-trigger">Our Programs</a></li>
-            <li><a href="press.html">Press</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="donate.html" class="btn-donate">Donate Now <i class="fas fa-arrow-right"></i></a></li>
-         <!--   <div class="lang-icon-box">
-               <i class="fas fa-globe"></i>
-              <div id="google_translate_element"></div>
-           </div>-->
-            
-        </ul>
-    </nav>
-
-    <header class="hero">
-        
-        <div class="slideshow">
-            <div class="slide"></div>
-            <div class="slide"></div>
-            <div class="slide"></div>
-        </div>
-
-        <div class="overlay"></div>
-
-        <div class="hero-content">
-            <span class="sub-heading">Give the Gift of Hope</span>
-            <h1>ATHIYAYAM CHARITABLE TRUST</h1>
-            <p>Dedicated to empowering marginalized communities through education, healthcare, and sustainable social welfare initiatives. Join us in making a difference.</p>
-            <a href="#" class="btn-discover">Discover Now <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </header>
-
-    <a href="https://wa.me/919092919000" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
     </a>
 
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#program-trigger">Our Programs</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="donate.html" class="btn-donate">Donate Now <i class="fas fa-arrow-right"></i></a></li>
+    </ul>
+</nav>
+
+<header class="hero">
+    
+    <div class="slideshow">
+        <div class="slide"></div> <div class="slide"></div> <div class="slide"></div> </div>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content-wrapper">
+        
+        <div class="hero-text-slide slide-text-1">
+            <span class="sub-heading">Empower Minds</span>
+            <h1>EDUCATION<br>FOR ALL</h1>
+            <p>Scholarships & supplies for a brighter future.</p>
+            
+        </div>
+
+        <div class="hero-text-slide slide-text-2">
+            <span class="sub-heading">Save Lives</span>
+            <h1>MEDICAL<br>CARE & AID</h1>
+            <p>Free checkups and medicine for the needy.</p>
+            
+        </div>
+
+        <div class="hero-text-slide slide-text-3">
+            <span class="sub-heading">Go Green</span>
+            <h1>PROTECT<br>NATURE</h1>
+            <p>Tree planting and sustainable living initiatives.</p>
+            
+        </div>
+
+    </div>
+</header>
 
 
     <section class="cta-section" id="cta-trigger">
@@ -155,12 +153,12 @@
     <section class="mv-section" id="mv-trigger">
         
         <div class="mv-header">
-            <h2>Our Guiding Principles</h2>
+            <h2>Aims & Objectives</h2>
             <div class="separator"></div>
         </div>
 
         <div class="objectives-wrapper">
-            <h3 class="obj-title"><i class="fas fa-bullseye"></i> Aims & Objectives</h3>
+          <!--  <h3 class="obj-title"><i class="fas fa-bullseye"></i> </h3> -->
             
             <div class="objectives-grid">
                 <div class="obj-item">
@@ -580,163 +578,174 @@
         </div>
     </footer>
 
+    <a href="https://wa.me/919876543210?text=Hello%20Athiyayam%20Trust,%20I%20would%20like%20to%20know%20more." 
+   class="whatsapp-btn" 
+   target="_blank" 
+   title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+   </a>
+
+    <a href="#" id="scrollUp" class="scroll-up-btn">
+    <i class="fas fa-arrow-up"></i>
+    </a>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
 
-        /* --- 1. CTA SECTION & COUNTER --- */
-        const ctaSection = document.querySelector('#cta-trigger');
-        if (ctaSection) {
-            const ctaCards = document.querySelectorAll('.cta-card');
-            const counterElement = document.getElementById('counter');
-            let counted = false;
+                /* --- 1. CTA SECTION & COUNTER --- */
+                const ctaSection = document.querySelector('#cta-trigger');
+                if (ctaSection) {
+                    const ctaCards = document.querySelectorAll('.cta-card');
+                    const counterElement = document.getElementById('counter');
+                    let counted = false;
 
-            const ctaObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Animate Cards
-                        ctaCards.forEach((card, index) => {
-                            card.style.animationDelay = `${index * 0.2}s`;
-                            card.classList.add('is-visible');
+                    const ctaObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                // Animate Cards
+                                ctaCards.forEach((card, index) => {
+                                    card.style.animationDelay = `${index * 0.2}s`;
+                                    card.classList.add('is-visible');
+                                });
+
+                                // Animate Counter
+                                if (!counted && counterElement) {
+                                    animateCounter(counterElement, 200, 2000);
+                                    counted = true;
+                                }
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.3 });
+                    ctaObserver.observe(ctaSection);
+                }
+
+                // Counter Logic Helper
+                function animateCounter(element, target, duration) {
+                    let start = 0;
+                    const stepTime = Math.abs(Math.floor(duration / target));
+                    const timer = setInterval(() => {
+                        start += 1;
+                        element.textContent = start + (start === target ? "+" : "");
+                        if (start >= target) {
+                            clearInterval(timer);
+                            element.textContent = target + "+";
+                        }
+                    }, stepTime);
+                }
+
+
+                /* --- 2. GENERAL SECTION ANIMATIONS (About, Mission, Focus, Programs, Testimonials) --- */
+                // We can use a single observer for all these sections to make the site faster
+                const animatedSections = [
+                    '#about-trigger', 
+                    '#mv-trigger', 
+                    '#focus-trigger', 
+                    '#program-trigger', 
+                    '#testi-trigger'
+                ];
+
+                const generalObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('section-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                animatedSections.forEach(id => {
+                    const el = document.querySelector(id);
+                    if (el) generalObserver.observe(el); // Only observe if element exists
+                });
+
+
+                /* --- 3. EVENTS SLIDER LOGIC --- */
+                const track = document.getElementById('track');
+                const eventCards = document.querySelectorAll('.event-card');
+                const dotsContainer = document.getElementById('dots-container');
+
+                // Only run slider logic if the slider actually exists on this page
+                if (track && eventCards.length > 0 && dotsContainer) {
+                    let currentIndex = 0;
+                    let cardsPerView = 3;
+                    let totalSlides = eventCards.length;
+
+                    function updateCardsPerView() {
+                        if (window.innerWidth <= 768) cardsPerView = 1;
+                        else if (window.innerWidth <= 992) cardsPerView = 2;
+                        else cardsPerView = 3;
+                        createDots();
+                        updateSlidePosition();
+                    }
+
+                    function createDots() {
+                        dotsContainer.innerHTML = '';
+                        const maxIndex = totalSlides - cardsPerView + 1;
+                        for (let i = 0; i < maxIndex; i++) {
+                            const dot = document.createElement('div');
+                            dot.classList.add('dot');
+                            if (i === 0) dot.classList.add('active');
+                            dot.addEventListener('click', () => {
+                                currentIndex = i;
+                                updateSlidePosition();
+                                resetTimer();
+                            });
+                            dotsContainer.appendChild(dot);
+                        }
+                    }
+
+                    function updateSlidePosition() {
+                        const maxIndex = totalSlides - cardsPerView;
+                        if (currentIndex > maxIndex) currentIndex = 0;
+                        if (currentIndex < 0) currentIndex = maxIndex;
+
+                        const dots = document.querySelectorAll('.dot');
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentIndex);
                         });
 
-                        // Animate Counter
-                        if (!counted && counterElement) {
-                            animateCounter(counterElement, 200, 2000);
-                            counted = true;
+                        // Safety check for card width
+                        if(eventCards[0]) {
+                            const cardWidth = eventCards[0].offsetWidth;
+                            const gap = 30;
+                            const moveAmount = (cardWidth + gap) * currentIndex;
+                            track.style.transform = `translateX(-${moveAmount}px)`;
                         }
-                        observer.unobserve(entry.target);
                     }
-                });
-            }, { threshold: 0.3 });
-            ctaObserver.observe(ctaSection);
-        }
 
-        // Counter Logic Helper
-        function animateCounter(element, target, duration) {
-            let start = 0;
-            const stepTime = Math.abs(Math.floor(duration / target));
-            const timer = setInterval(() => {
-                start += 1;
-                element.textContent = start + (start === target ? "+" : "");
-                if (start >= target) {
-                    clearInterval(timer);
-                    element.textContent = target + "+";
-                }
-            }, stepTime);
-        }
+                    function nextSlide() {
+                        currentIndex++;
+                        updateSlidePosition();
+                    }
 
+                    let slideTimer = setInterval(nextSlide, 4000);
+                    function resetTimer() {
+                        clearInterval(slideTimer);
+                        slideTimer = setInterval(nextSlide, 4000);
+                    }
 
-        /* --- 2. GENERAL SECTION ANIMATIONS (About, Mission, Focus, Programs, Testimonials) --- */
-        // We can use a single observer for all these sections to make the site faster
-        const animatedSections = [
-            '#about-trigger', 
-            '#mv-trigger', 
-            '#focus-trigger', 
-            '#program-trigger', 
-            '#testi-trigger'
-        ];
-
-        const generalObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-visible');
-                    observer.unobserve(entry.target);
+                    window.addEventListener('resize', updateCardsPerView);
+                    updateCardsPerView(); // Run on load
                 }
             });
-        }, { threshold: 0.2 });
-
-        animatedSections.forEach(id => {
-            const el = document.querySelector(id);
-            if (el) generalObserver.observe(el); // Only observe if element exists
-        });
+        </script>    
 
 
-        /* --- 3. EVENTS SLIDER LOGIC --- */
-        const track = document.getElementById('track');
-        const eventCards = document.querySelectorAll('.event-card');
-        const dotsContainer = document.getElementById('dots-container');
 
-        // Only run slider logic if the slider actually exists on this page
-        if (track && eventCards.length > 0 && dotsContainer) {
-            let currentIndex = 0;
-            let cardsPerView = 3;
-            let totalSlides = eventCards.length;
-
-            function updateCardsPerView() {
-                if (window.innerWidth <= 768) cardsPerView = 1;
-                else if (window.innerWidth <= 992) cardsPerView = 2;
-                else cardsPerView = 3;
-                createDots();
-                updateSlidePosition();
-            }
-
-            function createDots() {
-                dotsContainer.innerHTML = '';
-                const maxIndex = totalSlides - cardsPerView + 1;
-                for (let i = 0; i < maxIndex; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = i;
-                        updateSlidePosition();
-                        resetTimer();
-                    });
-                    dotsContainer.appendChild(dot);
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'en',
+                        includedLanguages: 'en,ta,hi,ml', // English, Tamil, Hindi, Malayalam
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                        autoDisplay: false
+                    }, 'google_translate_element');
                 }
-            }
+            </script>
 
-            function updateSlidePosition() {
-                const maxIndex = totalSlides - cardsPerView;
-                if (currentIndex > maxIndex) currentIndex = 0;
-                if (currentIndex < 0) currentIndex = maxIndex;
+            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-                const dots = document.querySelectorAll('.dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-
-                // Safety check for card width
-                if(eventCards[0]) {
-                    const cardWidth = eventCards[0].offsetWidth;
-                    const gap = 30;
-                    const moveAmount = (cardWidth + gap) * currentIndex;
-                    track.style.transform = `translateX(-${moveAmount}px)`;
-                }
-            }
-
-            function nextSlide() {
-                currentIndex++;
-                updateSlidePosition();
-            }
-
-            let slideTimer = setInterval(nextSlide, 4000);
-            function resetTimer() {
-                clearInterval(slideTimer);
-                slideTimer = setInterval(nextSlide, 4000);
-            }
-
-            window.addEventListener('resize', updateCardsPerView);
-            updateCardsPerView(); // Run on load
-        }
-    });
-</script>    
-
-
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'en,ta,hi,ml', // English, Tamil, Hindi, Malayalam
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-</body>
-</html>
+    </body>
+    </html>
