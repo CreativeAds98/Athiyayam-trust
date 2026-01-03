@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athiyayam Trust | Empowering Lives</title>
+    <link rel="icon" href="assets/favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
  
 </head>
 <body>
 
-    <div class="top-bar">
+   <!-- <div class="top-bar">
         <div class="contact-info">
             <span><i class="fas fa-envelope"></i> contact@athiyayam.com</span>
             <span><i class="fas fa-phone-alt"></i> +91 9092019000 / 8124381432</span>
@@ -22,24 +24,28 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-    </div>
+    </div>-->
 
     <nav class="navbar">
-       <a href="index.html" class="logo">
-        <img src="assets/Logo.png" alt="Athiyayam Trust Logo"> 
-       <span>ATHIYAYAM TRUST</span>  
-        </a>
+                <a href="index.html" class="logo">
+                    <img src="assets/Logo.png" alt="Logo">
+                    <div class="logo-text">
+                        <span class="brand-main">ATHIYAYAM</span>
+                        <span class="brand-sub">TRUST</span>
+                    </div>
+                </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="#program-trigger">Our Programs</a></li>
             <li><a href="press.html">Press</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-
-            <div id="google_translate_element"></div>
-
             <li><a href="donate.html" class="btn-donate">Donate Now <i class="fas fa-arrow-right"></i></a></li>
+         <!--   <div class="lang-icon-box">
+               <i class="fas fa-globe"></i>
+              <div id="google_translate_element"></div>
+           </div>-->
             
         </ul>
     </nav>
@@ -151,24 +157,6 @@
         <div class="mv-header">
             <h2>Our Guiding Principles</h2>
             <div class="separator"></div>
-        </div>
-
-        <div class="core-values-container">
-            
-            <div class="core-card vision">
-                <div class="core-icon-box"><i class="far fa-eye"></i></div>
-                <h3>Our Vision</h3>
-                <p>To create a compassionate society where every individual, regardless of their background, has access to quality healthcare, education, and equal opportunities for growth.</p>
-                <i class="far fa-eye watermark"></i>
-            </div>
-
-            <div class="core-card mission">
-                <div class="core-icon-box"><i class="fas fa-rocket"></i></div>
-                <h3>Our Mission</h3>
-                <p>We are dedicated to empowering the underprivileged through sustainable welfare programs, skill development, and emergency relief, ensuring dignity and hope for all.</p>
-                <i class="fas fa-rocket watermark"></i>
-            </div>
-
         </div>
 
         <div class="objectives-wrapper">
@@ -736,15 +724,19 @@
     });
 </script>    
 
+
+
 <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
-            includedLanguages: 'en,ta',
+            includedLanguages: 'en,ta,hi,ml', // English, Tamil, Hindi, Malayalam
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
             autoDisplay: false
         }, 'google_translate_element');
     }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
 </html>

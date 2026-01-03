@@ -4,61 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate Now | Athiyayam Trust</title>
+    <link rel="icon" href="assets/favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- CORE STYLES (MATCHING THEME) --- */
-        :root {
-            --primary-color: #1a2e45; /* Navy */
-            --accent-color: #ff5722;  /* Orange */
-            --light-bg: #f4f6f8;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Poppins', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-body); background-color: var(--light-bg); color: #333; }
-        a { text-decoration: none; transition: 0.3s; }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            background: #fff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .logo {
-    display: flex;
-    align-items: center; /* Centers image and text vertically */
-    gap: 15px;           /* Space between the logo image and the text */
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.logo img {
-    height: 55px; /* Adjust this height to fit your navbar */
-    width: auto;  /* Maintains the image shape */
-    object-fit: contain;
-}
-
-/* Optional: Mobile adjustment */
-@media (max-width: 768px) {
-    .logo { font-size: 1.4rem; }
-    .logo img { height: 40px; }
-}
-        .nav-links { display: flex; align-items: center; list-style: none; }
-        .nav-links li { margin: 0 15px; }
-        .nav-links a { color: #333; font-weight: 500; }
-        .nav-links a:hover { color: var(--accent-color); }
-        .btn-donate { background-color: var(--accent-color); color: #fff !important; padding: 10px 25px; border-radius: 50px; font-weight: 600; }
-
-        /* --- HERO HEADER --- */
+ /* --- HERO HEADER --- */
         .donate-header {
             background: linear-gradient(rgba(26, 46, 69, 0.9), rgba(26, 46, 69, 0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
@@ -218,16 +169,26 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="logo">
-            <img src="assets/Logo.png" alt="Logo">
-            <span>ATHIYAYAM TRUST</span>
-        </a>
+                <a href="index.html" class="logo">
+                    <img src="assets/Logo.png" alt="Logo">
+                    <div class="logo-text">
+                        <span class="brand-main">ATHIYAYAM</span>
+                        <span class="brand-sub">TRUST</span>
+                    </div>
+                </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
+            <li><a href="#program-trigger">Our Programs</a></li>
             <li><a href="press.html">Press</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="donate.html" class="btn-donate">Donate Now</a></li>
+            <li><a href="donate.html" class="btn-donate">Donate Now <i class="fas fa-arrow-right"></i></a></li>
+         <!--   <div class="lang-icon-box">
+               <i class="fas fa-globe"></i>
+              <div id="google_translate_element"></div>
+           </div>-->
+            
         </ul>
     </nav>
 
@@ -284,45 +245,45 @@
         <div class="online-form-container">
             <h2>Make an Online Donation</h2>
             
-            <form action="#">
-                <div class="form-group">
-                    <label class="form-label">Choose Donation Amount (₹)</label>
-                    <div class="amount-options">
-                        <div class="amt-btn" onclick="selectAmount(500)">500</div>
-                        <div class="amt-btn active" onclick="selectAmount(1000)">1000</div>
-                        <div class="amt-btn" onclick="selectAmount(2500)">2500</div>
-                        <div class="amt-btn" onclick="selectAmount(5000)">5000</div>
+                <form id="donation-form">
+                    <div class="form-group">
+                        <label class="form-label">Choose Donation Amount (₹)</label>
+                        <div class="amount-options">
+                            <div class="amt-btn" onclick="selectAmount(500)">500</div>
+                            <div class="amt-btn active" onclick="selectAmount(1000)">1000</div>
+                            <div class="amt-btn" onclick="selectAmount(2500)">2500</div>
+                            <div class="amt-btn" onclick="selectAmount(5000)">5000</div>
+                        </div>
+                        <input type="number" id="customAmount" class="form-control" placeholder="Enter Custom Amount" value="1000" required>
                     </div>
-                    <input type="number" id="customAmount" class="form-control" placeholder="Enter Custom Amount" value="1000">
-                </div>
 
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" placeholder="John Doe" required>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-control" placeholder="john@example.com" required>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">Phone Number (Optional)</label>
-                    <input type="text" class="form-control" placeholder="+91 98765 43210">
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210">
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">PAN Card (For Tax Exemption)</label>
-                    <input type="text" class="form-control" placeholder="ABCDE1234F" style="text-transform: uppercase;">
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">PAN Card (For Tax Exemption)</label>
+                        <input type="text" class="form-control" placeholder="ABCDE1234F" style="text-transform: uppercase;">
+                    </div>
 
-                <button type="submit" class="btn-submit-donation">Proceed to Pay <i class="fas fa-lock" style="margin-left:8px; font-size:0.9rem;"></i></button>
+                    <button type="submit" class="btn-submit-donation">Proceed to Pay <i class="fas fa-lock" style="margin-left:8px; font-size:0.9rem;"></i></button>
 
-                <div class="tax-benefit">
-                    <i class="fas fa-certificate"></i>
-                    <span><strong>Tax Benefit:</strong> All donations are 50% tax-exempt under Section 80G of the Income Tax Act.</span>
-                </div>
-            </form>
+                    <div class="tax-benefit">
+                        <i class="fas fa-certificate"></i>
+                        <span><strong>Tax Benefit:</strong> All donations are 50% tax-exempt under Section 80G of the Income Tax Act.</span>
+                    </div>
+                </form>
         </div>
 
     </div>
@@ -369,6 +330,68 @@
             });
         }
     </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    // --- PART A: Handle Amount Selection Buttons ---
+    function selectAmount(amount) {
+        // Update the input box
+        document.getElementById('customAmount').value = amount;
+        
+        // Update the visual "active" state of buttons
+        const buttons = document.querySelectorAll('.amt-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText.trim() == amount) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // --- PART B: Handle Payment Submission ---
+    document.getElementById('donation-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop page from reloading
+
+        // 1. Get Values
+        var amt = document.getElementById('customAmount').value;
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        if(amt < 1) {
+            alert("Please enter a valid amount");
+            return;
+        }
+
+        // 2. Configure Razorpay
+        var options = {
+            "key": "YOUR_RAZORPAY_KEY_ID", // PASTE YOUR KEY HERE
+            "amount": amt * 100, // Razorpay takes amount in paise (1000 INR = 100000 paise)
+            "currency": "INR",
+            "name": "Athiyayam Trust",
+            "description": "Donation for Social Welfare",
+            "image": "assets/Logo.png", // Ensure this path is correct
+            "handler": function (response){
+                // Success Action
+                alert("Thank you! Payment Successful. ID: " + response.razorpay_payment_id);
+                // Redirect to Thank You page (Optional)
+                // window.location.href = "thankyou.html";
+            },
+            "prefill": {
+                "name": name,
+                "email": email,
+                "contact": phone
+            },
+            "theme": {
+                "color": "#1a2e45" // Navy Blue
+            }
+        };
+
+        // 3. Open Payment Window
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
+</script>
 
 </body>
 </html>

@@ -45,34 +45,55 @@
             z-index: 1000;
         }
 
+        /* --- CENTERED & NEW FONT LOGO --- */
         .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Space between image and text */
-    text-decoration: none; /* Removes underline from link */
-}
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between Image and Text */
+            text-decoration: none;
+        }
 
-/* Style for the Image */
-.logo img {
-    height: 50px; /* Adjust this to fit your navbar height */
-    width: auto;  /* Maintains aspect ratio */
-    object-fit: contain;
-}
+        .logo img {
+            height: 85px; /* Slightly larger logo */
+            width: auto;
+        }
 
-/* Style for the Text */
-.logo span {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    line-height: 1; /* Prevents text from jumping up/down */
-}
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* This CENTERS 'TRUST' below 'ATHIYAYAM' */
+            line-height: 1;
+        }
 
-/* Mobile Responsiveness for Logo */
-@media (max-width: 768px) {
-    .logo img { height: 40px; }
-    .logo span { font-size: 1.4rem; }
-}
+        /* Main Name - Bold & Dark */
+        .brand-main {
+            font-family: 'Poppins', sans-serif; /* Clean Modern Font */
+            font-size: 1.5rem;
+            font-weight: 800; /* Extra Bold */
+            color: #1a2e45;   /* Navy Blue */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Trust - Spaced Out & Orange */
+        .brand-sub {
+            font-family: 'Poppins', sans-serif; /* Same Font Family */
+            font-size: 0.8rem;
+            font-weight: 500; /* Medium Weight */
+            color: #ff5722;   /* Orange Accent */
+            letter-spacing: 6px; /* Wide spacing for elegance */
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Mobile Adjustment */
+        @media (max-width: 768px) {
+            .logo img { height: 45px; }
+            .brand-main { font-size: 1.2rem; }
+            .brand-sub { font-size: 0.65rem; letter-spacing: 3px; }
+        }
+
 
         .nav-links { display: flex; align-items: center; }
         .nav-links li { margin: 0 15px; }
@@ -88,44 +109,6 @@
         }
         .btn-donate:hover { background-color: #e64a19; transform: translateY(-2px); }
 
-
-            /* --- SAFE TRANSLATOR STYLES --- */
-
-            /* 1. Hide Google Top Bar */
-            .goog-te-banner-frame { display: none !important; }
-            body { top: 0px !important; }
-
-            /* 2. Container Styling */
-            #google_translate_element {
-                display: inline-block;
-                margin-right: 10px;
-                vertical-align: middle;
-            }
-
-            /* 3. Style the Dropdown Box */
-            .goog-te-combo {
-                background-color: #fff;
-                border: 1px solid #1a2e45;
-                color: #1a2e45;
-                padding: 6px 10px;
-                border-radius: 20px;
-                font-size: 0.85rem;
-                font-weight: 600;
-                cursor: pointer;
-                outline: none;
-                height: auto !important; /* Forces it to be visible */
-            }
-
-            /* 4. Hide 'Powered by Google' logo/text specifically */
-            .goog-te-gadget-icon { display: none !important; }
-            .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
-            .goog-te-gadget-simple span { display: none !important; }
-
-            /* 5. Ensure the inner text of the dropdown is NOT hidden */
-            .goog-te-combo option {
-                color: #000;
-                font-size: 14px;
-            }
 
 
         /* --- HERO SECTION WITH ZOOM SLIDESHOW --- */
@@ -1577,3 +1560,64 @@
 
 
 
+
+
+        /* --- translator style --- */
+
+/* --- ICON-ONLY TRANSLATOR STYLE --- */
+
+/* 1. The Container (Looks like a button) */
+.lang-icon-box {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;       /* White background */
+    border: 1px solid #1a2e45;    /* Navy border */
+    border-radius: 50%;           /* Circle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;             /* Keeps the hidden widget inside */
+}
+
+/* 2. The Visible Globe Icon */
+.lang-icon-box i {
+    color: #1a2e45;               /* Navy Icon */
+    font-size: 18px;
+    pointer-events: none;         /* Clicks pass through to the widget */
+}
+
+/* 3. Hover Effect */
+.lang-icon-box:hover {
+    background-color: #1a2e45;
+    border-color: #1a2e45;
+}
+.lang-icon-box:hover i {
+    color: #ffffff;               /* Icon turns white */
+}
+
+/* 4. The Google Widget (Invisible but Clickable Overlay) */
+#google_translate_element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;                   /* INVISIBLE */
+    z-index: 10;
+}
+
+/* 5. Force the Select dropdown to fill the circle */
+.goog-te-combo {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    cursor: pointer;
+}
+
+/* 6. Hide standard Google junk */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0px !important; }
+.goog-te-gadget-icon { display: none !important; }
